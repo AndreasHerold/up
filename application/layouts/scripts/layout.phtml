@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            a:link,
+            a:visited
+            {
+                color: #0398CA;
+            }
+
+            .topnav {
+                margin: 0; padding: 0.8em;
+                text-align: center;
+                border: 1px solid black;
+                background-color: #fafafa;
+            }
+            .topnav li {
+                list-style: none;
+                display: inline;
+                margin: 0.4em; padding: 0;
+            }
+
+            .topnav li a {
+                padding: 0.2em 1em;
+                text-decoration: none; font-weight: bold;
+                border: 1px solid black;
+                border-left-color: white; border-top-color: white;
+                color: maroon; background-color: #ccc;
+            }
+            .topnav li a:hover {
+                border-color: white;
+                border-left-color: black; border-top-color: black;
+                color: white; background-color: gray;
+            }
+
+        </style>
+    </head>
+    <body>
+    <ul class="topnav">
+        <li><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), 'default', true) ?>">Home</a></li>
+        <?php if ($this->isLoggedIn): ?>
+            <li><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'upload'), 'default', true) ?>">Upload</a></li>
+            <li><a href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout'), 'default', true) ?>">Logout</a></li>
+        <?php else : ?>
+            <li><a href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login'), 'default', true) ?>">Login</a></li>
+        <?php endif; ?>
+    </ul>
+    <?php echo $this->layout()->content; ?>
+    </body>
+</html>

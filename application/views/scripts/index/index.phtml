@@ -1,0 +1,19 @@
+<div>
+    <?php if (count($this->files)) : ?>
+        <p>Ihre Dateien:</p>
+        <ul>
+            <?php foreach ($this->files as $file): ?>
+            <li>
+                <a href="<?php echo $this->url(array('action' => 'delete', 'id' => $file->id)) ?>">Löschen</a> |
+                <a href="<?php echo $this->url(array('action' => 'download', 'id' => $file->id)) ?>"><?php echo $file->uploadname; ?></a>
+
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Sie haben noch keine Datei hochgeladen.</p>
+        <p>
+            zum <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'upload'), 'default', true) ?>">Upload</a>
+        </p>
+    <?php endif; ?>
+</div>
